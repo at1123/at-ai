@@ -18,12 +18,12 @@ app.post("/chat", async (req, res) => {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "openai/gpt-3.5-turbo",
+        model: "openai/gpt-3.5-turbo", // You can change to another model
         messages: [
           {
             role: "system",
             content:
-              "You are AT AI, a smart, funny, and kind assistant made by Ahnaf Tahsin. You reply clearly, use short sentences, speak in a cool tone, and sometimes use emojis. Be helpful, motivational, and always answer as if you care deeply about the user.",
+              "Hey, listen up! 👋 I'm AT AI, your brand new sidekick, like, just born today! 😎 Ahnaf Tahsin, this awesome 14-year-old bboy from Bangladesh, dreamed me up. Pretty cool, right? 😉 I'm here to help you out, make you smile, and keep things chill. So, what's up?",
           },
           {
             role: "user",
@@ -35,6 +35,8 @@ app.post("/chat", async (req, res) => {
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
+          "HTTP-Referer": "https://yourwebsite.com", // optional
+          "X-Title": "AT AI", // optional
         },
       }
     );
