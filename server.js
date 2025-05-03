@@ -18,7 +18,7 @@ app.post("/chat", async (req, res) => {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "openai/gpt-3.5-turbo",
+        model: "openai/gpt-3.5-turbo", // You can change to another model
         messages: [
           {
             role: "system",
@@ -33,10 +33,10 @@ app.post("/chat", async (req, res) => {
       },
       {
         headers: {
-          Authorization: Bearer ${process.env.OPENROUTER_API_KEY},
+          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "https://yourwebsite.com",
-          "X-Title": "AT AI",
+          "HTTP-Referer": "https://yourwebsite.com", // optional
+          "X-Title": "AT AI", // optional
         },
       }
     );
@@ -48,5 +48,5 @@ app.post("/chat", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(AT AI running on port ${port});
+  console.log(`AT AI running on http://localhost:${port}`);
 });
